@@ -6,6 +6,8 @@ pkgs.mkShell {
         (pkgs.python3.withPackages(pypkgs: with pypkgs; [
             requests
             python-dotenv
+            pandas
+            pandas-stubs
         ]))
     ];
 
