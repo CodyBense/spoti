@@ -1,34 +1,30 @@
 use clap::{Parser, Subcommand};
 
-#[derive(Parser, Debug)]
-#[command(author = "Cody Bense", version = "1.0")]
+#[derive(Debug, Parser)]
+#[clap(author, version, about)]
 struct Args {
-    #[command(subcommand)]
+    #[clap(subcommand)]
     command: Command,
 }
 
-#[derive(Subcommand, Debug)]
+#[derive(Debug, Subcommand)]
 enum Command {
-    #[command(name = "add")]
+    #[clap(about = "Adds two numbers")]
     Add {
-        #[arg(short, long)]
+        #[clap(help = "The first number")]
         a: i32,
-        #[arg(short, long)]
+        #[clap(help = "The second number")]
         b: i32,
-    },
-    #[command(name = "sub")]
-    Subtract {
-        #[arg(short, long)]
-        a: i32,
-        #[arg(short, long)]
-        b: i32,
-    },
+    }
 }
 
 fn main() {
     let args = Args::parse();
+
     match args.command {
-        Command::Add { a, b } => println!("Result: {}", a + b),
-        Command::Subtract { a, b } => println!("Result: {}", a - b),
+        Command::Add { a, b } => {
+            let result = a + b;
+            println!("Result: {}", result);
+        }
     }
 }
