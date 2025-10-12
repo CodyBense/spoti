@@ -1,2 +1,2 @@
 # spoti
-Stupid cli to control my spotify from the terminal
+A silly little cli to control your spotify from the terminal instead of using the app
